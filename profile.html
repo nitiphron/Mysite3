@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>W3.CSS Template</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(33,238,233,1) 64%, rgba(0,212,255,1) 100%);
+      }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.10.1/Chart.min.js"></script>
+</head>
+<body>
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-black w3-wide w3-padding w3-card">
+      <a href="#home" class="w3-bar-item w3-button"><b>RMU</b> Nitiphon Chaisue</a>
+      <!-- Float links to the right. Hide them on small screens -->
+      <div class="w3-right w3-hide-small">
+          <a href="index.html" class="w3-bar-item w3-button">index</a>
+          <a href="java.html" class="w3-bar-item w3-button">java</a>
+          <a href="api.html" class="w3-bar-item w3-button">api</a>
+          <a href="profile.html" class="w3-bar-item w3-button">profile</a>
+          <!-- Add Font Awesome icon for mobile navigation -->
+          <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+          </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- JavaScript function for mobile navigation -->
+  <script>
+  function myFunction() {
+    var x = document.getElementsByClassName("w3-bar")[0];
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+    } else {
+      x.className = x.className.replace(" w3-show", "");
+    }
+  }
+  </script>
+  
+
+<!-- Your content goes here -->
+
+<hr>
+<!-- Navbar (sit on top) -->
+<hr>
+<style>
+    .w3-bar-item {
+      font-size: 18px; /* You can adjust the font size as needed */
+    }
+
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      margin: auto;
+      text-align: center;
+      font-family: arial;
+    }
+    
+    .title {
+      color: grey;
+      font-size: 18px;
+    }
+    
+    button {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 8px;
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+    }
+    
+    a {
+      text-decoration: none;
+      font-size: 22px;
+      color: white;
+    }
+    
+    button:hover, a:hover {
+      opacity: 0.7;
+    }
+
+
+</style>
+</head>
+
+    </style>
+    </head>
+    <body>
+        
+    <h2 style="text-align:center"> Profile </h2>
+    
+    <div class="card">
+      <img src="./hard.jpg" alt="John" style="width:100%">
+      <h1>Mr.Nitiphon Chaisue</h1>
+      <p class="title"> Information Technology</p>
+      <p>Rajabhat Maha Sarakham Universsity</p>
+      <p>phone : 065-474-3544</p>
+      <p>Facebook : Nitiphon Chaisue</p>
+      <p>E-mail : hardandmin@gmail.com</p>
+      <div style="margin: 24px 0;">
+        <a href="#"><i class="fa fa-dribbble"></i></a> 
+        <a href="#"><i class="fa fa-twitter"></i></a>  
+        <a href="#"><i class="fa fa-linkedin"></i></a>  
+        <a href="#"><i class="fa fa-facebook"></i></a> 
+      </div>
+      <p><button>Contact</button></p>
+    </div>
+
+    </body>
+    </html>
+    

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+  body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(33,238,233,1) 64%, rgba(0,212,255,1) 100%);
+    }
+    .container {
+        width: 50%;
+        height: 100;
+        margin: 50 auto; /* จะทำให้ Container อยู่ตรงกลางของหน้าจอ */
+        background-color: #f0f0f0;
+        padding: 20px;
+    }
+</style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+</head>
+<body>
+<!-- Navbar (sit on top) -->
+<hr>
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-black w3-wide w3-padding w3-card">
+      <a href="#home" class="w3-bar-item w3-button"><b>RMU</b> Nitiphon Chaisue</a>
+      <!-- Float links to the right. Hide them on small screens -->
+      <div class="w3-right w3-hide-small">
+          <a href="index.html" class="w3-bar-item w3-button">index</a>
+          <a href="java.html" class="w3-bar-item w3-button">java</a>
+          <a href="api.html" class="w3-bar-item w3-button">api</a>
+          <a href="profile.html" class="w3-bar-item w3-button">profile</a>
+          <!-- Add Font Awesome icon for mobile navigation -->
+          <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+          </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- JavaScript function for mobile navigation -->
+  <script>
+  function myFunction() {
+    var x = document.getElementsByClassName("w3-bar")[0];
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+    } else {
+      x.className = x.className.replace(" w3-show", "");
+    }
+  }
+  </script>
+  
+<div class="container">
+ <h1>API</h1>
+        <h2>Click to get a Random Image</h2>
+        <img id="randomImage" src="https://source.unsplash.com/random/300x300" alt="Random Image">
+        <button onclick="getRandomImage()">Get Random Image</button>
+<!-- End page content -->
+   <hr>
+<h2>Click to get a Random Country Name</h2>
+<p id="randomCountry">Country name will appear here</p>
+<button onclick="getRandomCountry()">Get Random Country</button>
+    <hr>
+      <form 
+  method="POST" 
+  action="https://script.google.com/macros/s/AKfycbwZGauG-43Bx_eCQ080PmcUCL2V0aKXeUemRoo3y6IlyNkqL8mFabkz-7WRw8h4-HHC/exec"
+>
+  <label for="Email">Email</label>
+  <input name="Email" type="email" required>
+
+  <label for="Name">Name</label>
+  <input name="Name" type="text" required>
+
+
+  <button type="submit">Send</button>
+</form>
+<br>
+<iframe width="400" height="300" src="https://docs.google.com/spreadsheets/d/1Gf9M81V_KLx641hNdStsYuCYHF8hgwhvoU1HYxeQJno/edit?fbclid=IwAR3mjttNptcrLyyPpBvV_uQaslLahafO-ZPE7hS7kRpSL3VtT08MaRBJj0Y#gid=0"></iframe>
+ <hr>      
+<hr>
+
+<h2>Coinbase API Demo</h2>
+<div id="lastUpdateTime"></div>
+<div id="prices"></div>
+<hr>
+
+    </div> 
+        <script>
+          
+          //document.getElementById("demo").innerHTML = "Hello World";
+         
+          
+          function getRandomImage() {
+  
+      const randomNumber = Math.floor(Math.random() * 100); // สุ่มตัวเลขเพื่อใช้เป็นค่าสำหรับคำค้นหาแบบสุ่ม
+      const randomImageUrl = `https://source.unsplash.com/300x300/?random&${randomNumber}`; // Unsplash API ที่รับพารามิเตอร์สำหรับการกำหนดความกว้างและความสูงของภาพ
+
+      document.getElementById("randomImage").src = randomImageUrl;
+    }
+function getRandomCountry() {
+      fetch("https://restcountries.com/v3.1/all")
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
+          const randomIndex = Math.floor(Math.random() * data.length);
+          const randomCountry = data[randomIndex].name.common;
+
+          document.getElementById("randomCountry").textContent = `Random Country: ${randomCountry}`;
+        })
+        .catch(function(error) {
+          console.log("Error fetching country data:", error);
+        });
+    }
+    
+
+  function fetchPrices() {
+      var now = new Date();
+      var currentTime = now.toLocaleTimeString();
+
+      fetch('https://api.coinbase.com/v2/exchange-rates?currency=USDT')
+          .then(response => response.json())
+          .then(data => {
+              displayPrices(data);
+              displayLastUpdateTime(currentTime);
+          })
+          .catch(error => {
+              console.error('Error fetching data:', error);
+              alert('Error fetching data. Please try again.');
+          });
+  }
+ 
+ 
+ 
+  function displayPrices(data) {
+      var pricesDiv = document.getElementById('prices');
+      var rates = data.data.rates;
+
+      var currencies = ['BTC', 'ETH', 'XRP', 'LTC', 'DOGE', 'BCH', 'BNB', 'LINK', 'XLM'];
+      var pricesHtml = '<p>1 USDT can buy:</p><ul>';
+
+      currencies.forEach(currency => {
+          if (rates[currency]) {
+              pricesHtml += `<li>${currency}: ${rates[currency]}</li>`;
+          } else {
+              pricesHtml += `<li>${currency}: N/A</li>`;
+          }
+      });
+
+      pricesHtml += '</ul>';
+      pricesDiv.innerHTML = pricesHtml;
+  }
+
+  function displayLastUpdateTime(currentTime) {
+      var updateTimeDiv = document.getElementById('lastUpdateTime');
+      updateTimeDiv.innerHTML = `<p>Last Update Time: ${currentTime}</p>`;
+  }
+
+  fetchPrices();
+
+  setInterval(fetchPrices, 3000);
+  </script>
+  </div>
